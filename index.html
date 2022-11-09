@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Wodin</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="files/index/index.css"/>
+  </head>
+  <body>
+    <div class="main">
+      <div class="container mt-5">
+        <h1>Wodin demo and documentation</h1>
+
+        <p>
+          This site exists for two reasons; to show off different core
+          features of Wodin and to act as a source of documentation by
+          example for people configuring a Wodin deployment.  Let us
+          know if there's something you would like to see here (via
+          Teams or email Rich or Emma).
+        </p>
+
+        <p>
+          To see what major new features have been added, see
+          the <a href="https://reside-ic.github.io/wodin-news">Wodin
+          news blog</a>.
+        </p>
+
+        <h2>Examples</h2>
+
+        First, here is a list of examples that show common ways of
+        configuring an app. There's more information on the details of
+        configuration in the next section.
+
+        <h3>Empty basic app</h3>
+
+        <p><a href="apps/empty">Go to app</a></p>
+
+        <p>
+          The simplest application - a continuous time (ODE) model,
+          with which you can edit code to create a model, visualise
+          traces over time, and run simple sensitivity analyses. This
+          version starts up completely empty, so the user has to start
+          writing code to get going.  Because there is no code, there
+          will be no plot shown on startup.
+        </p>
+
+        <p>
+          See
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/empty.config.json">here</a>.
+        </p>
+
+        <h3>Start with default code</h3>
+
+        <p><a href="apps/defaultcode">Go to app</a></p>
+
+        <p>
+          If you want to start an application but have a model
+          pre-loaded. This will be run immediately on startup, so the
+          users will see a graph with a set of trajectories on it (in
+          this case it's an SIR model of course).
+        </p>
+
+        <p>
+          Note that here, we also change the <code>endTime</code>
+          attribute to make the time domain match more neatly the
+          interesting region of the system by default.
+        </p>
+
+        <p>
+          See
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/defaultcode.config.json">here</a>,
+          and the default code
+          itself <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/defaultCode/defaultcode.R">here</a>.
+        </p>
+
+        <h3>Include explanation tab</h3>
+
+        <p><a href="apps/explanation">Go to app</a></p>
+
+        <p>
+          Include a tab of guidance as the first tab in your
+          application. This can include LaTeX-style maths, as well as
+          images and other markdown-supported formatting.
+        </p>
+
+        <p>
+          See
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/explanation.config.json">here</a>, the help file <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/help/explanation.md">here</a> (and <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/defaultCode/explanation.R">the default code</a>).
+        </p>
+
+        <h3>Fit model to data</h3>
+
+        <p><a href="apps/fit">Go to app</a></p>
+
+        <p>
+          A simple least-squared fitting app.
+        </p>
+
+        <p>
+          You may want to distribute data, but we don't currently
+          support pre-loading the data into the app (let us know if
+          this is something you need). Generally, if you want to
+          distribute the data, you should put the file
+          within <code>files/</code> and reference it here.
+        </p>
+
+        <ul>
+          <li>Download <a href="files/fit/influenza_data.csv"><code>influenza_data.csv</code></a>
+          here, and upload it into the app to get started.
+        </ul>
+
+        <p>
+          Once the users have uploaded data, they'll need to go to the
+          Options tab and link the data to their model variables, go
+          to the "Fit" tab on the right hand pane, then select the
+          parameter to vary, then run the fit.
+        </p>
+
+        <p>
+          See the
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/fit.config.json">here</a>,
+          alongside
+          the <a href="https://github.com/mrc-ide/wodin-demo-config/tree/main/files/fit">file
+          to supply with the app</a>. Within this index file we
+          reference that file
+          as <code>&lt;a href="files/fit/influenza_data.csv"&gt;influenza_data.csv&lt;/a&gt;</code> (see the <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/index.html">source code for this page</a>).
+        </p>
+
+        <h3>Stochastic</h3>
+
+        <p><a href="apps/stochastic">Go to app</a></p>
+
+        <p>
+          The stochastic support is still in development, partly
+          because the previous version in the shiny app was very
+          simple.
+        </p>
+
+        <p>
+          Currently, the visualisation tab will <em>always</em> initially
+          show individual traces, and there is no limit to the
+          number that a user can select. This could make their
+          browser quite slow.
+        </p>
+
+        <p>
+          Note that loading and saving a session from this app will
+          rerun the model on restore, so individual traces will not
+          necessarily be the same. We have plans to improve this in
+          the future but it's not straightforward.
+        </p>
+
+        <p>
+          See
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/stochastic.config.json">here</a>.
+        </p>
+
+        <h3>Read-only code</h3>
+
+        <p><a href="apps/readonly">Go to app</a></p>
+
+        <p>
+          In cases where you do not want the users to edit the model,
+          just interact with it, you can disable changing the code. Be
+          sure that the initial code is provided and valid or this
+          produces a fairly useless app!
+        </p>
+
+        <p>
+          See
+          configuration <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/apps/readonly.config.json">here</a>.
+        </p>
+
+        <h2>General layout and configuration</h2>
+
+        <p>
+          For Wodin deployments, you will generally have a collection
+          of apps (e.g., for different days in a course).  These apps
+          can all be of different types (e.g., one for fitting to
+          data, another for running stochastic simulations, see below
+          for details).
+        </p>
+
+        <h3>The file <code>wodin.config.json</code></h3>
+
+        <p>
+          This will be core configuration for your deployment. It is
+          in "<a href="https://en.wikipedia.org/wiki/JSON">JSON</a>"
+          format, which is designed more for computers than humans,
+          but should hopefully be easy enough to work with.  Keys are
+          case sensitive (e.g., <code>courseTitle</code> is different
+          to <code>coursetitle</code>) and quotes are required on all
+          strings including keys.  We will create a validator to help
+          with creating these.
+        </p>
+
+        <ul>
+          <li>
+            <code>courseTitle</code>: The human-readable title for
+            your course. This will be displayed in the top-left of every
+            app, clicking it will return to the main landing page
+          </li>
+          <li>
+            <code>savePrefix</code>: A single word, used to organise
+            saved sessions within the database. This should reflect
+            your <code>courseTitle</code> to some degree but not
+            contain spaces. We use this to allow cleaning up of saved
+            sessions once a course is finished (depending on how long
+            you need to keep them for).
+          </li>
+          <li>
+            <code>baseUrl</code>: The URL to find your site. For a
+            deployment on epimodels, this will
+            be <code>https://epimodels.dide.ic.ac.uk/&lt;path&gt;</code>,
+            where <code>&lt;path&gt</code> is specific to your deployment.
+          </li>
+          <li>
+            <code>appsPath</code>: The path where each app will be
+            found. The default is <code>apps</code>, so if you had an
+            app called "ebola" and a <code>baseURL</code>
+            of <code>https://epimodels.dide.ic.ac.uk/mycourse</code>
+            then it would be available
+            at <code>https://epimodels.dide.ic.ac.uk/mycourse/apps/ebola</code>. You
+            can use something else here
+            (e.g., <code>models</code>, <code>example</code>) if you
+            prefer.
+          </li>
+        </ul>
+        <p>There are few others that you should leave alone:</p>
+        <ul>
+          <li>
+            <code>port</code>: The port that the application will
+            serve on; because this will be behind a proxy this does
+            not really matter in a production deployment.
+          </li>
+          <li>
+            <code>odinAPI</code>: The URL to find
+            the <a href="https://mrc-ide.github.io/odin.api">odin.api</a>
+            server. Typically the default
+            value <code>http://odin.api:8001</code> will be
+            appropriate here.
+          </li>
+          <li>
+            <code>redisURL</code>: The URL to find
+            the <a href="https://redis.io">Redis</a> server. Typically
+            the default value <code>redis://redis:6379</code> will be
+            appropriate here.
+          </li>
+        </ul>
+
+        <p>At the top level, some other files and directories should exist</p>
+
+        <ul>
+          <li>
+            <code>index.html</code>: A single HTML file that
+            users can use to navigate between your apps.  Clicking on
+            the course name in the top-left of each app will return to
+            this page. You can write your HTML however you want.
+          </li>
+          <li>
+            <code>apps/</code>: A directory with different application
+            configurations (see below). If you
+            adjust <code>appsPath</code> you must rename this to
+            reflect that value.
+          </li>
+          <li>
+            <code>defaultCode/</code>: A directory with default
+            code. If a file <code>example.R</code> exists, then the
+            app at <code>apps/example</code> will load this code.
+          </li>
+          <li>
+            <code>help</code>: Markdown files used as per-application
+            help. See example for more information.
+          </li>
+          <li>
+            <code>files</code>: Additional files that you can
+            reference from your HTML.
+          </li>
+        </ul>
+
+        <p>
+          As a concrete example, you can see the configuration for this demo deployment <a href="https://github.com/mrc-ide/wodin-demo-config/blob/main/wodin.config.json">here</a>
+        </p>
+
+        <h2>App-level configuration</h2>
+
+        <p>
+          Each app is defined by a
+          file <code>&lt;name&gt;.config.json</code> within
+          the <code>apps/</code> directory. As
+          with <code>wodin.config.json</code> this is a JSON file with
+          fields:
+        </p>
+
+        <ul>
+          <li>
+            <code>appType</code>: The overall app type. The valid
+            values are "basic" (visualisation of an ODE model),
+            "stochastic" (visualisation of a discrete time stochastic
+            model) or "fit" (simple fitting of a continuous time model)
+          </li>
+          <li>
+            <code>title</code>: The application title, a
+            human-readable string. This will be rendered in the
+            title bar next to the course title, and also in the page
+            title (so will appear in the browser's tabs).
+          </li>
+          <li>
+            <code>readOnlyCode</code>: Boolean, (<code>true</code>
+            or <code>false</code> indicating if the code should be
+            non-editable. If <code>true</code> then the users cannot
+            edit the model code, though they can still change
+            parameters and run sensitivity analyses. This can be used
+            with any of the three <code>appType</code> values.
+          </li>
+          <li>
+            <code>endTime</code>: The default end time. This can be
+            altered by the user once the app has started via the "end
+            time" option in the Options tab. In
+            the <code>appType</code> is "fit", then after the user
+            uploads data, the end time in the data overrides this
+            value. The idea here is that as the course designer, you
+            may have a good idea of the likely timescale it makes
+            sense to run the models you'll be writing over.
+          </li>
+          <li>
+            <code>stateUploadIntervalMillis</code>: The time, in
+            milliseconds, between saves to the server (1500 is
+            1.5s). This normally does not need changing.  We wait this
+            long since the last substantive change to the app state
+            (changing the code, altering a parameter, etc) then send
+            the state to be saved.  On very slow connections it might
+            be wise to increase his.
+          </li>
+          <li>
+            <code>help</code>: A JSON object that controls how the
+            help tab is rendered. If present it should have the
+            form <code>{ "tabname": "mytabname" }</code>,
+            replacing <code>mytabname</code> with the string that you
+            would like the help text to have. If this is provided then
+            you must also make sure that that a
+            file <code>help/appname.md</code> exists
+            (with <code>appname</code> being your application name,
+            the same as in <code>appname.config.json</code>).
+          </li>
+        </ul>
+
+        <h2>General points</h2>
+
+        <p>
+          Can't mix app types (no fit within stochastic models). Can't
+          support *both* stochastic and deterministic models from a
+          single app.
+        </p>
+
+        <p>
+          Not all odin features are supported. Arrays, interpolation,
+          etc. Discrete time and stochastic models can't
+          use <code>output()</code>
+        </p>
+
+        <h2>Unimplemented features in the backlog</h2>
+
+        <p>
+          We do plan on implementing these, but your feedback is welcome
+        </p>
+
+        <ul>
+          <li>
+            Hide a subset of variables from the interface to keep the
+            plots simpler
+          </li>
+          <li>
+            Freeze a set of parameters so that you can compare
+            multiple parameter sets against each other (including via
+            sensitivity)
+          </li>
+          <li>
+            Download data from sensitivity plots, and from the
+            stochastic app.
+          </li>
+          <li>
+            Multiple plots at the same time; show several plots above
+            each other so that it's easier to compare traces that have
+            very different scales
+          </li>
+          <li>
+            Better control of plotting options, including log scale axes
+          </li>
+          <li>
+            Improvements to the process of creating a new
+            configuration, seeing what it will look like, testing that
+            it is correct, and automatically deploying it.  It is not
+            currently straightforward to run Wodin on your laptop at
+            present.
+          </li>
+        </ul>
+
+        <h2>Using the plots</h2>
+
+        <p>
+          Some useful tips for interacting with the plots, which are
+          implemented
+          using <a href="https://plotly.com/javascript/">plotly.js</a>
+        </p>
+
+        <ul>
+          <li>
+            Double click on a line in the legend to display only that
+            trace in the plot. Useful for simplifying complicated
+            plots. Unfortunately, plotly makes this a bit tricky and
+            people on trackpads sometimes struggle.
+          </li>
+          <li>
+            Click and drag anywhere on the plot to zoom in. If you
+            drag only horizontally or vertically then it will zoom to
+            a horizontal or vertical region only, which can be useful.
+          </li>
+          <li>
+            Double click on the background of the plot to reset the
+            zoom to show the entire plot, after zooming in.
+          </li>
+          <li>
+            You can download a copy of a plot as a png image by
+            clicking the camera icon on the plotly toolbar.
+          </li>
+        </ul>
+
+        <div class="float-right">
+          <a href="https://reside-ic.github.io"><img src="files/index/reside_logo.png" style="width:150px; display:block;"></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

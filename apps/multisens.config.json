@@ -1,0 +1,6 @@
+{
+  "appType": "basic",
+  "title": "Multi-sensitivity",
+  "endTime": 15,
+  "multiSensitivity": true
+}

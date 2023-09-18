@@ -176,8 +176,8 @@
         <p><a href="apps/multisens">Go to app</a></p>
 
         <p>
-          You can enable multi-sensitivity in an app, by including `"multiSensitivity": true` in the config. This will
-          currently allow users to define multiple parameters for sensitivity, run multi-sensitivity and download
+          You can enable multi-sensitivity in an app, by including <code>"multiSensitivity": true`</code>code> in the app config.
+          This will allow users to define multiple parameters for sensitivity, run multi-sensitivity and download
           summary results. Single sensitivity with plotting is still included in the app, with separate parameter
           settings to multi-sensitivity.
         </p>
@@ -358,6 +358,15 @@
             file <code>help/appname.md</code> exists
             (with <code>appname</code> being your application name,
             the same as in <code>appname.config.json</code>).
+          </li>
+          <li>
+            <code>multiSensitivity</code>: <code>true</code> or <code>false</code>
+            to indicate whether multi-Sensitivity should be enabled in the app (default
+            is <code>false</code> if omitted). When enabled, an additional right-hand tab,
+            "Multi-sensitivity" will be shown, and when this is open users can define multiple
+            sensitivity parameter settings, run multi-sensitivity and download summary results.
+            There is currently no plotting of multi-sensitivity results. Single-parameter sensitivity
+            is still included side-by-side with multi-sensitivity.
           </li>
         </ul>
 
